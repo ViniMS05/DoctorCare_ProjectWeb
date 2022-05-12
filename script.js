@@ -5,10 +5,42 @@ onScroll()
 function onScroll() {
   showNavOnScroll()
   showBackToTopOnScroll()
+
+  activateMenuAtCurrentSection(home)
+  activateMenuAtCurrentSection(services)
+  activateMenuAtCurrentSection(about)
+  activateMenuAtCurrentSection(contact)
 };
 
+function activateMenuAtCurrentSection(section) {
+  const targetLine = scrollY + innerHeight / 2
+
+  //verificar se a seção passou da linha
+  const sectionTop = section.offsetTop
+  const sectionHeight = section.offsetHeight
+
+  const sectionTopReachOrPassedTargetLine = targetLine >= sectionTop
+
+  //verificar se a base esta abaixo da linha alvo
+  const sectionEndsAt = sectionTop + sectionHeight
+
+  const sectionEndPassedTargetLine = sectionEndsAt <= targetLine
+
+  // Limites da seção
+  const sectionBoundaries = sectionTopReachOrPassedTargetLine && !sectionEndPassedTargetLine
+
+  const sectionId = section.getAttribute('id')
+  const menuElement = document.querySelector(`.menu a[href*=${sectionId}]`)
+
+  menuElement.classList.remove('active')
+  if (sectionBoundaries) {
+    menuElement.classList.add('active')
+  }
+
+}
+
 function showNavOnScroll() {
-  var navigation = document.querySelector("#navigation");
+  const navigation = document.querySelector("#navigation");
 
   if (scrollY > 0) {
     navigation.classList.add("scroll");
@@ -18,7 +50,7 @@ function showNavOnScroll() {
 };
 
 function showBackToTopOnScroll () {
-  var backToTopButton = document.querySelector("#backToTopButton");
+  const backToTopButton = document.querySelector("#backToTopButton");
 
   if (scrollY > 800) {
     backToTopButton.classList.add("show");
@@ -26,11 +58,11 @@ function showBackToTopOnScroll () {
     backToTopButton.classList.remove("show");
   }
 
-  if (scrollY > 4420) {
+  /* if (scrollY > 4440) {
     backToTopButton.classList.add("change");
   } else {
     backToTopButton.classList.remove("change");
-  }
+  } */
 };
 
 function openMenu() {
