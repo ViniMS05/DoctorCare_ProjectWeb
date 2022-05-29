@@ -195,6 +195,106 @@ nav .close-menu {
   position: fixed;
 }
 
+/* MENU EXPANDED =========================================================*/
+body.menu-expanded {
+  overflow: hidden;
+}
+
+body.menu-expanded > :not(nav) {
+  visibility: hidden;
+}
+
+.menu,
+.close-menu,
+body.menu-expanded .open-menu {
+  opacity: 0;
+  visibility: hidden;
+}
+
+body.menu-expanded .menu,
+body.menu-expanded .close-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu {
+  transform: translateY(100%);
+}
+
+body.menu-expanded .menu {
+  top: 0;
+  left: 0;
+  background: var(--primary-color);
+  
+  width: 100vw;
+  height: 100vh;
+  
+  padding-top: var(--nav-height);
+  
+  transition: transform 200ms;
+  transform: translateY(0);
+}
+
+.menu ul:nth-child(1) a {
+  display: flex;
+  flex-direction: column;
+  gap: 4.8rem;
+  
+  margin-top: 6rem;
+  
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 3.1rem;
+  
+  color: white;
+}
+
+.menu ul a {
+  text-decoration: none;
+}
+
+.menu .button {
+  background: white;
+  
+  border-radius: 4rem;
+  
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  
+  line-height: 2.3rem;
+  text-decoration: none;
+  
+  display: inline-block;
+  padding: 1.6rem 3.2rem;
+  
+  margin-top: 4.8rem;
+  margin-bottom: 8rem;
+  border: none;
+}
+
+.menu .button:hover {
+  background: var(--primary-color);
+  color: white;
+  
+  filter: brightness(1.1);
+}
+
+body.menu-expanded .logo,
+body.menu-expanded button {
+  position: relative;
+  z-index: 100;
+}
+
+body.menu-expanded .logo path {
+  fill: white;
+}
+
+body.menu-expanded button path {
+  stroke: white;
+}
+
 /* HOME =========================================================*/
 
 #home {
@@ -271,106 +371,6 @@ nav .close-menu {
   margin: 0;
 }
 
-/* MENU EXPANDED =========================================================*/
-body.menu-expanded {
-  overflow: hidden;
-}
-
-body.menu-expanded > :not(nav) {
-  visibility: hidden;
-}
-
-.menu,
-.close-menu,
-body.menu-expanded .open-menu {
-  opacity: 0;
-  visibility: hidden;
-}
-
-body.menu-expanded .menu,
-body.menu-expanded .close-menu {
-  opacity: 1;
-  visibility: visible;
-}
-
-.menu {
-  transform: translateY(100%);
-}
-
-body.menu-expanded .menu {
-  top: 0;
-  left: 0;
-  background: var(--primary-color);
-
-  width: 100vw;
-  height: 100vh;
-
-  padding-top: var(--nav-height);
-
-  transition: transform 200ms;
-  transform: translateY(0);
-}
-
-.menu ul:nth-child(1) a {
-  display: flex;
-  flex-direction: column;
-  gap: 4.8rem;
-
-  margin-top: 6rem;
-
-  font-size: 2.4rem;
-  font-weight: 700;
-  line-height: 3.1rem;
-
-  color: white;
-}
-
-.menu ul a {
-  text-decoration: none;
-}
-
-.menu .button {
-  background: white;
-
-  border-radius: 4rem;
-
-  font-weight: 700;
-  font-size: 1.8rem;
-  text-transform: uppercase;
-  color: var(--primary-color);
-
-  line-height: 2.3rem;
-  text-decoration: none;
-
-  display: inline-block;
-  padding: 1.6rem 3.2rem;
-
-  margin-top: 4.8rem;
-  margin-bottom: 8rem;
-  border: none;
-}
-
-.menu .button:hover {
-  background: var(--primary-color);
-  color: white;
-
-  filter: brightness(1.1);
-}
-
-body.menu-expanded .logo,
-body.menu-expanded button {
-  position: relative;
-  z-index: 100;
-}
-
-body.menu-expanded .logo path {
-  fill: white;
-}
-
-body.menu-expanded button path {
-  stroke: white;
-}
-
 /* SERVICES =========================================================*/
 #services header h2 {
   margin-bottom: 6rem;
@@ -385,7 +385,7 @@ body.menu-expanded button path {
 #services .card {
   padding: 2.4rem;
   text-align: left;
-
+  
   background-color: white;
 
   border: 1px solid var(--brand-light);
